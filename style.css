@@ -1,0 +1,150 @@
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:radial-gradient(circle at bottom,#1a001a,#000);
+color:white;
+font-family:Segoe UI;
+overflow:hidden;
+}
+
+/* start screen */
+#scene{display:none;position:relative;width:100%;height:100vh;}
+#startScreen{text-align:center;}
+
+input{padding:10px;border-radius:20px;border:none;}
+button{padding:10px 20px;border:none;border-radius:20px;background:#ff3b6b;color:white;cursor:pointer}
+
+/* stem grow animation */
+.rosePlant{
+position:absolute;
+bottom:0;
+width:6px;
+height:0;
+background:linear-gradient(green,#0b5d1e);
+border-radius:10px;
+animation:grow 4s forwards;
+}
+
+@keyframes grow{
+to{height:260px;}
+}
+
+/* different positions */
+.r1{left:15%;animation-delay:0s;}
+.r2{left:30%;animation-delay:1s;}
+.r3{left:50%;animation-delay:2s;}
+.r4{left:70%;animation-delay:3s;}
+.r5{left:85%;animation-delay:4s;}
+
+/* leaves */
+.rosePlant::before,
+.rosePlant::after{
+content:"";
+position:absolute;
+width:40px;
+height:20px;
+background:#1faa3c;
+border-radius:40px 40px 40px 0;
+opacity:0;
+animation:leaf 2s 4s forwards;
+}
+
+.rosePlant::before{left:-35px;transform:rotate(-40deg);}
+.rosePlant::after{right:-35px;transform:rotate(40deg);}
+
+@keyframes leaf{to{opacity:1;}}
+
+/* realistic flower petals */
+.rosePlant div{}
+
+/* rose bloom */
+.rosePlant::marker{content:"";}
+
+.rosePlant::after,
+.rosePlant::before{}
+
+.rosePlant{
+--size:60px;
+}
+
+.rosePlant:after{}
+
+.rosePlant{
+}
+
+/* petals circle */
+.rosePlant{
+position:absolute;
+}
+
+.rosePlant::after{
+top:-40px;
+}
+
+.rosePlant::before{}
+
+.rosePlant{
+}
+
+/* actual flower */
+.rosePlant::after{
+content:"";
+position:absolute;
+top:-45px;
+left:50%;
+transform:translateX(-50%) scale(0);
+width:60px;
+height:60px;
+background:
+radial-gradient(circle at 30% 30%,#ff6b81,#d90429 60%);
+border-radius:50%;
+animation:bloom 2s 6s forwards,breath 4s 8s infinite ease-in-out;
+}
+
+@keyframes bloom{to{transform:translateX(-50%) scale(1);}}
+@keyframes breath{0%,100%{transform:translateX(-50%) scale(1);}50%{transform:translateX(-50%) scale(1.08);}}
+
+/* heart */
+#heart{
+position:absolute;
+top:30%;
+left:50%;
+transform:translateX(-50%) scale(0);
+width:220px;
+height:200px;
+background:linear-gradient(#ff1a4b,#b3002d);
+clip-path:polygon(50% 95%,0% 40%,25% 0%,50% 25%,75% 0%,100% 40%);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+font-size:28px;
+opacity:0;
+animation:heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat{
+0%,100%{transform:translateX(-50%) scale(1);}
+50%{transform:translateX(-50%) scale(1.1);}
+}
+
+/* sparkles */
+.sparkles::before{
+content:"✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨";
+position:absolute;
+top:0;
+width:100%;
+text-align:center;
+font-size:22px;
+animation:fall 10s linear infinite;
+opacity:.6;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
